@@ -410,7 +410,7 @@ class _MyHomePageState extends State {
                   top: 0.0,
                   right: contentWidth / 40,
                   bottom: 0.0),
-              enabledBorder: const OutlineInputBorder(),
+              border: const OutlineInputBorder(),
             ),
             items: _dropdownMenu.entries.map((entry) {
               return DropdownMenuItem(
