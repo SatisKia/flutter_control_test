@@ -32,7 +32,7 @@ class _MyHomePageState extends State {
   void initState(){
     super.initState();
     scrollController = ScrollController();
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       scrollController!.jumpTo( scrollController!.position.maxScrollExtent );
     });
   }
