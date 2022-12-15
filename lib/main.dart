@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'utility.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,6 +43,32 @@ class _MyHomePageState extends State {
     scrollController!.dispose();
     super.dispose();
   }
+
+  // ボタン連打防止
+  MyPressed _pressed1 = MyPressed((){
+    // ボタンが押された時の処理
+    debugPrint("ボタン1が押された");
+  });
+  MyPressed _pressed2 = MyPressed((){
+    // ボタンが押された時の処理
+    debugPrint("ボタン2が押された");
+  });
+  MyPressed _pressed3 = MyPressed((){
+    // ボタンが押された時の処理
+    debugPrint("ボタン3が押された");
+  });
+  MyPressed _pressed4 = MyPressed((){
+    // ボタンが押された時の処理
+    debugPrint("ボタン4が押された");
+  });
+  MyPressed _pressed5 = MyPressed((){
+    // ボタンが押された時の処理
+    debugPrint("ボタン5が押された");
+  });
+  MyPressed _pressed6 = MyPressed((){
+    // ボタンが押された時の処理
+    debugPrint("ボタン6が押された");
+  });
 
   // チェックボックス
   bool _checkboxValue = true;
@@ -147,12 +174,19 @@ class _MyHomePageState extends State {
         const SizedBox(height: 10)
     );
 
+    _pressed1.attach(setState);
+    _pressed2.attach(setState);
+    _pressed3.attach(setState);
+    _pressed4.attach(setState);
+    _pressed5.attach(setState);
+    _pressed6.attach(setState);
+
     // ボタン
     if( buttonTest ) {
       body.add( Column(children: [
         Row(children: [
           TextButton(
-            onPressed: () {},
+            onPressed: _pressed1.pressed ? null : _pressed1.onPressed,
             child: const Text('TextButton'),
           ),
           const SizedBox(width: 10),
@@ -160,7 +194,7 @@ class _MyHomePageState extends State {
             style: TextButton.styleFrom(
               primary: Colors.red,
             ),
-            onPressed: () {},
+            onPressed: _pressed2.pressed ? null : _pressed2.onPressed,
             child: const Text('TextButton'),
           ),
           const SizedBox(width: 10),
@@ -171,7 +205,7 @@ class _MyHomePageState extends State {
         ] ),
         Row(children: [
           OutlinedButton(
-            onPressed: () {},
+            onPressed: _pressed3.pressed ? null : _pressed3.onPressed,
             child: const Text('Outlined'),
           ),
           const SizedBox(width: 10),
@@ -180,7 +214,7 @@ class _MyHomePageState extends State {
                 primary: Colors.red,
                 backgroundColor: Colors.yellow
             ),
-            onPressed: () {},
+            onPressed: _pressed4.pressed ? null : _pressed4.onPressed,
             child: const Text('Outlined'),
           ),
           const SizedBox(width: 10),
@@ -194,7 +228,7 @@ class _MyHomePageState extends State {
             style: ElevatedButton.styleFrom(
               elevation: 5,
             ),
-            onPressed: () {},
+            onPressed: _pressed5.pressed ? null : _pressed5.onPressed,
             child: const Text('Elevated'),
           ),
           const SizedBox(width: 10),
@@ -205,7 +239,7 @@ class _MyHomePageState extends State {
               shadowColor: Colors.orange,
               elevation: 5,
             ),
-            onPressed: () {},
+            onPressed: _pressed6.pressed ? null : _pressed6.onPressed,
             child: const Text('Elevated'),
           ),
           const SizedBox(width: 10),
