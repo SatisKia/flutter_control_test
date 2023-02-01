@@ -1,14 +1,15 @@
 class MyPressed {
   bool pressed = false;
+  bool auto;
   Function()? _onPressed;
   Function(void Function())? _setState;
-  MyPressed(Function() onPressed){
+  MyPressed(Function() onPressed, {this.auto = true}){
     _onPressed = onPressed;
   }
   void attach(Function(void Function()) setState){
     _setState = setState;
   }
-  void _setPressed(bool flag){
+  void setPressed(bool flag){
     if( _setState != null ){
       _setState!((){
         pressed = flag;
@@ -19,11 +20,13 @@ class MyPressed {
   }
   void onPressed(){
     if( !pressed ){
-      _setPressed(true);
+      setPressed(true);
       _onPressed!();
-      Future.delayed(const Duration(seconds: 1), (){
-        _setPressed(false);
-      });
+      if( auto ){
+        Future.delayed(const Duration(seconds: 1), (){
+          setPressed(false);
+        });
+      }
     }
   }
 }

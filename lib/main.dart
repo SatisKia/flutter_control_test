@@ -29,12 +29,46 @@ class _MyHomePageState extends State {
 
   ScrollController? scrollController;
 
+  // ボタン連打防止
+  late MyPressed _pressed1;
+  late MyPressed _pressed2;
+  late MyPressed _pressed3;
+  late MyPressed _pressed4;
+  late MyPressed _pressed5;
+  late MyPressed _pressed6;
+
   @override
   void initState(){
     super.initState();
     scrollController = ScrollController();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       scrollController!.jumpTo( scrollController!.position.maxScrollExtent );
+    });
+
+    // ボタン連打防止
+    _pressed1 = MyPressed((){
+      // ボタンが押された時の処理
+      debugPrint("ボタン1が押された");
+    });
+    _pressed2 = MyPressed((){
+      // ボタンが押された時の処理
+      debugPrint("ボタン2が押された");
+    });
+    _pressed3 = MyPressed((){
+      // ボタンが押された時の処理
+      debugPrint("ボタン3が押された");
+    });
+    _pressed4 = MyPressed((){
+      // ボタンが押された時の処理
+      debugPrint("ボタン4が押された");
+    });
+    _pressed5 = MyPressed((){
+      // ボタンが押された時の処理
+      debugPrint("ボタン5が押された");
+    });
+    _pressed6 = MyPressed((){
+      // ボタンが押された時の処理
+      debugPrint("ボタン6が押された");
     });
   }
 
@@ -43,32 +77,6 @@ class _MyHomePageState extends State {
     scrollController!.dispose();
     super.dispose();
   }
-
-  // ボタン連打防止
-  MyPressed _pressed1 = MyPressed((){
-    // ボタンが押された時の処理
-    debugPrint("ボタン1が押された");
-  });
-  MyPressed _pressed2 = MyPressed((){
-    // ボタンが押された時の処理
-    debugPrint("ボタン2が押された");
-  });
-  MyPressed _pressed3 = MyPressed((){
-    // ボタンが押された時の処理
-    debugPrint("ボタン3が押された");
-  });
-  MyPressed _pressed4 = MyPressed((){
-    // ボタンが押された時の処理
-    debugPrint("ボタン4が押された");
-  });
-  MyPressed _pressed5 = MyPressed((){
-    // ボタンが押された時の処理
-    debugPrint("ボタン5が押された");
-  });
-  MyPressed _pressed6 = MyPressed((){
-    // ボタンが押された時の処理
-    debugPrint("ボタン6が押された");
-  });
 
   // チェックボックス
   bool _checkboxValue = true;
